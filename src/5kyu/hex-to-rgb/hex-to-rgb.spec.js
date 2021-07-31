@@ -22,7 +22,7 @@ function hexGroupsToRGB(groups) {
   }, {});
 }
 
-fdescribe('HEX to RGB', () => {
+describe('HEX to RGB', () => {
   describe('split hex to groups', () => {
     it('should be defined', () => {
       expect(splitHexToGroups).toBeDefined();
