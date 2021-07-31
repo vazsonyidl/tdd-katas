@@ -38,7 +38,7 @@ function memoizedGetNonPrimeAtIndex() {
   }
 }
 
-fdescribe('Life without primes', () => {
+describe('Life without primes', () => {
   describe('check for numbers that contains only non prime numbers', () => {
     it('function should be defined', () => expect(containsOnlyNonPrime).toBeDefined());
 
