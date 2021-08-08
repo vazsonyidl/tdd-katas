@@ -8,25 +8,25 @@
  * second: add the remaining to the end of the string
  */
 
-function concatWith(values, separator) {
-  return separator ? values.join(` ${separator} `): values.join();
+const nameTransformObject = {
+  0: () => 'no one',
+  1: (names) => names[0],
+  2: (names) => concatWith(names, 'and'),
+  3: (names) => concatWith( [names[0], ` ${concatWith(names.slice(1), 'and')}`])
 }
+
+const defaultTransformFn = (names) => `${names[0]}, ${names[1]} and ${names.length - 2} others`;
+
+const concatWith = (values, separator) => separator ? values.join(` ${separator} `): values.join();
+
+const createDescription = (names) => names.length > 1 ? 'like this' : 'likes this';
 
 function prependNames(names) {
-  if(!Array.isArray(names) || names.length === 0) return 'no one';
-  if(names.length === 1) return names[0];
-  if(names.length === 2) return concatWith(names, 'and');
-  if(names.length === 3) return concatWith( [names[0], ` ${concatWith(names.slice(1), 'and')}`]);
-  return `${names[0]}, ${names[1]} and ${names.length - 2} others`;
+  const transformFn = nameTransformObject[names?.length || 0] || defaultTransformFn;
+  return transformFn(names);
 }
 
-function createDescription(names) {
-  return names.length > 1 ? 'like this' : 'likes this';
-}
-
-function likes(names) {
-  return `${prependNames(names)} ${createDescription(names)}`
-}
+const likes = (names) => `${prependNames(names)} ${createDescription(names)}`;
 
 fdescribe('Who likes it', () => {
 
@@ -35,6 +35,8 @@ fdescribe('Who likes it', () => {
   it('should accept one parameter', () => expect(prependNames.length).toBe(1));
 
   it('should return no one likes for empty array', () => expect(prependNames([])).toEqual('no one'));
+
+  it('should return no one likes for undefined', () => expect(prependNames(undefined)).toEqual('no one'));
 
   it('should return no one likes for non array values ', () => expect(prependNames([])).toEqual('no one'));
 
