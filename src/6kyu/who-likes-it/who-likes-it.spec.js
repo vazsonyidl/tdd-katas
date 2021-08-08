@@ -28,7 +28,7 @@ function prependNames(names) {
 
 const likes = (names) => `${prependNames(names)} ${createDescription(names)}`;
 
-fdescribe('Who likes it', () => {
+describe('Who likes it', () => {
 
   it('should be defined', expect(prependNames).toBeDefined);
 
