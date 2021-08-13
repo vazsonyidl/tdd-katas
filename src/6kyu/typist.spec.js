@@ -8,18 +8,16 @@
  * 2: count the leftover letters
  */
 
-const capsLockOffPattern = /([A-Z][a-z])/g;
-const capsLockOnPattern = /^[A-Z]|([a-z][A-Z])/g;
+const patternObject = {
+  capsOffPattern: /([A-Z][a-z])/g,
+  capsOnPattern: /^[A-Z]|([a-z][A-Z])/g,
+  lowercasePattern: /[a-z]/g,
+  uppercasePattern: /[A-Z]/g,
+}
 
-const typist = s => {
-  const lowercaseCount = (s.match(/[a-z]/g) || '').length || 0;
-  const uppercaseCount = (s.match(/[A-Z]/g) || '').length || 0;
-  const capslockOnCount = (s.match(capsLockOnPattern) || '').length || 0;
-  const capslockOffCount = (s.match(capsLockOffPattern) || '').length || 0;
-  return lowercaseCount + uppercaseCount + capslockOnCount + capslockOffCount;
-};
+const typist = s => Object.values(patternObject).reduce((matchCount, pattern) => matchCount += (s.match(pattern) || '').length || 0, 0);
 
-fdescribe('Typist', () => {
+describe('Typist', () => {
 
   it('should be defined', () => expect(typist).toBeDefined());
 
