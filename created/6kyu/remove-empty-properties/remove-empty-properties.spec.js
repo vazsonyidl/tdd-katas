@@ -15,7 +15,7 @@ function removeEmpty(object) {
 //   return JSON.parse(JSON.stringify(object, (k, v) => v ?? undefined))
 // }
 
-fdescribe('Remove empty properties', () => {
+describe('Remove empty properties', () => {
   it('to be defined', () => expect(removeEmpty).toBeDefined());
 
   it('should accept one parameter', () => expect(removeEmpty.length).toBe(1));
