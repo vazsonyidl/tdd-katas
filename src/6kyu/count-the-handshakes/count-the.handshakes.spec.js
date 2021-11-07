@@ -11,8 +11,7 @@ const getParticipants = (numberOfHandshakes) => {
   return minimumParticipants;
 };
 
-fdescribe('Find the people by handshakes', () => {
-  //
+describe('Find the people by handshakes', () => {
   it('0 handshake requires 1 people', () => expect(getParticipants(0)).toEqual(1));
 
   it('1 handshake requires 2 people', () => expect(getParticipants(1)).toEqual(2));
