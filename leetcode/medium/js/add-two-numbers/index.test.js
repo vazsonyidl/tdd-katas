@@ -16,7 +16,7 @@ describe('Add-two-numbers', function () {
     });
     });
 
-    describe.only('#findElement', () => {
+    describe('#findElement', () => {
         it('returns value for single element', () => {
             const element_one = new ListNode(7, undefined);
 
