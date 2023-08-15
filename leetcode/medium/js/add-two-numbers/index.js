@@ -17,8 +17,10 @@ export function ListNode(val, next) {
  * @return {ListNode}
  */
 export const addTwoNumbers = function(l1, l2) {
+    const numberOne = Number(findElement(l1));
+    const numberTwo = Number(findElement(l2));
 
-
+    return numberOne + numberTwo;
 };
 
 export const findElement = (node) => {

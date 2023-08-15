@@ -2,18 +2,20 @@ import {addTwoNumbers, findElement, ListNode} from "./index";
 
 describe('Add-two-numbers', function () {
 
-    describe('#', function () {
+    describe('#addTwoNumbers', function () {
 
-    it('returns 0 for 0 input', () => {
-        const list_one_element_one = new ListNode(0, undefined);
-        const list_one = [list_one_element_one];
+        it('returns value for multiple lists', () => {
+            const list_one_element_three = new ListNode(3, undefined);
+            const list_one_element_two = new ListNode(4, list_one_element_three);
+            const list_one_element_one = new ListNode(2, list_one_element_two);
 
-        const list_two_element_one = new ListNode(0, undefined);
-        const list_two = [list_two_element_one];
+            const list_two_element_three = new ListNode(4, undefined);
+            const list_two_element_two = new ListNode(6, list_two_element_three);
+            const list_two_element_one = new ListNode(5, list_two_element_two);
 
 
-        expect(addTwoNumbers(list_one, list_two)).toEqual([0]);
-    });
+            expect(addTwoNumbers(list_one_element_one, list_two_element_one)).toEqual(807);
+        });
     });
 
     describe('#findElement', () => {
